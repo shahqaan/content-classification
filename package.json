@@ -1,0 +1,43 @@
+{
+  "name": "content-classification",
+  "version": "0.1.0",
+  "description": "Gathers content from multiple applications and classifies them.",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack -p",
+    "start": "node server.js | bunyan",
+    "migrate": "sequelize db:migrate | bunyan",
+    "scrape": "node bin/scrape.js | bunyan --output short --color",
+    "server-start": "nodemon server.js | bunyan --output short --color",
+    "client-start": "webpack -d --watch",
+    "dev-start": "concurrently --kill-others \"npm run server-start\" \"npm run client-start\""
+  },
+  "dependencies": {
+    "babel-core": "6.21.0",
+    "babel-loader": "6.2.10",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "bluebird": "3.4.7",
+    "bunyan": "1.8.5",
+    "construx": "1.0.1",
+    "construx-copier": "1.0.0",
+    "eslint": "3.12.2",
+    "express": "4.14.0",
+    "kraken-js": "2.1.0",
+    "lodash": "4.17.3",
+    "moment": "2.17.1",
+    "mongoose": "4.7.5",
+    "react": "15.4.1",
+    "react-dom": "15.4.1",
+    "request": "2.79.0",
+    "request-promise": "4.1.1",
+    "webpack": "1.14.0"
+  },
+  "devDependencies": {
+    "concurrently": "3.1.0",
+    "mocha": "3.2.0",
+    "nodemon": "1.11.0",
+    "supertest": "2.0.1"
+  }
+}
