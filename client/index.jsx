@@ -29,17 +29,22 @@ class App extends React.Component {
 
   render () {
 
+    let articles = null;
+
     if (this.state.articles) {
-      const articles = this.state.articles.map((article, i) => {
+      articles = this.state.articles.map((article, i) => {
         return (<tr key={i} >
           <td>{article.url}</td>
           <td>{this.makeKeywords(article.keywords)}</td>
         </tr>);
       });
-      return <table>{articles}</table>;
-    } else {
-      return <table></table>
+
     }
+
+    return (<table>
+      <tr><th>URL</th><th>Tags</th></tr>
+      {articles}
+    </table>);
 
 
   }
