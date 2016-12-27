@@ -6,8 +6,13 @@ var ArticlesModel = function() {
 
   var articleSchema = mongoose.Schema({
     url: {type: String},
-    body: {type: String},
-    keywords: {type: mongoose.Schema.Types.Mixed}
+    content: {type: String},
+    keywords: [{
+      keyword: String,
+      count: String,
+      positions_in_text: [Number],
+      relevance: Number
+    }]
   });
 
   return mongoose.model('articles', articleSchema);

@@ -1,7 +1,7 @@
 /**
  * Created by shahqaan on 27/12/2016.
  */
-var request = require('request-promise');
+const request = require('request-promise');
 
 class MonkeyLearn {
 
