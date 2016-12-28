@@ -5,8 +5,11 @@ var mongoose = require('mongoose');
 var ArticlesModel = function() {
 
   var articleSchema = mongoose.Schema({
-    url: {type: String},
-    content: {type: String},
+    url: String,
+    content: String,
+    title: String,
+    tags: [String],
+    source: String,
     keywords: [{
       keyword: String,
       count: String,
