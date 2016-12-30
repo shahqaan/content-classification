@@ -1,7 +1,8 @@
 var Articles = require('../../../models/articles.js');
-module.exports = function (router) {
 
-  router.get('', function(req, res) {
+module.exports = (router) => {
+
+  router.get('', (req, res) => {
     Articles.find({}).then(articles => res.json(articles));
   });
 
