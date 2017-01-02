@@ -2,12 +2,13 @@
  * Created by shahqaan on 28/12/2016.
  */
 
-const AIMLInterpreter = require('aimlinterpreter');
+const aimlHigh = require('aiml-high');
 const path = require('path');
-var aimlInterpreter = new AIMLInterpreter({name:'WireInterpreter', age:'42'});
-const normalizations = require('../../../lib/rosie/substitutions/normal.substitution.json');
+var interpreter = new aimlHigh({name:'Shahqaan', age:'42'});
+const requireDir = require('require-dir');
+const substitutions = requireDir('../../../lib/bot/substitutions');
 
-const rosie = './app/lib/alice/';
+const rosie = './app/lib/bot/aiml/';
 const fs = require('fs');
 
 fs.readdir(rosie, (err, files) => {
@@ -16,11 +17,9 @@ fs.readdir(rosie, (err, files) => {
     return path.join(rosie, file);
   });
 
-  // aimlInterpreter.loadAIMLFilesIntoArray(rosieFiles);
+  interpreter.loadFiles(rosieFiles);
 
 });
-
-// aimlInterpreter.loadAIMLFilesIntoArray(['./app/lib/rosie/maps/be2been.map']);
 
 module.exports = (router) => {
 
@@ -33,19 +32,17 @@ module.exports = (router) => {
     let message = ' ' + req.body.message.toLowerCase();
 
 
-    normalizations.forEach(n => {
+    substitutions.normal.forEach(n => {
       message = message.replace(n[0], n[1]);
     });
 
     message = message.substr(1);
     message = message.replace(/[\?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 
-    res.json(message);
+    interpreter.findAnswer(message, function (answer, wildCardArray, input) {
 
-
-    // aimlInterpreter.findAnswerInLoadedAIMLFiles(req.body.message, function (answer, wildCardArray, input) {
-    //   res.json(answer);
-    // });
+      res.json({answer});
+    });
 
   });
 

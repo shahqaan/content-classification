@@ -15,6 +15,7 @@
     "dev-start": "concurrently --kill-others \"npm run server-start\" \"npm run client-start\""
   },
   "dependencies": {
+    "aiml-high": "0.0.8",
     "aimlinterpreter": "0.1.7",
     "async": "2.1.4",
     "axios": "0.15.3",
@@ -39,6 +40,7 @@
     "react-dom": "15.4.1",
     "request": "2.79.0",
     "request-promise": "4.1.1",
+    "require-dir": "0.3.1",
     "restify": "4.3.0",
     "sleep": "5.0.0",
     "webpack": "1.14.0",

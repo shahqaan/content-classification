@@ -14,6 +14,8 @@ describe('Array', function() {
 
   let app, mock;
 
+  this.timeout(10000);
+
   beforeEach(function (done) {
     app = express();
     app.on('start', done);
@@ -38,7 +40,7 @@ describe('Array', function() {
     it.only('should successfully read message', function (done) {
       request(mock)
         .post('/api/v1/chats')
-        .send({message: "What's my name?"})
+        .send({message: "What is my name?"})
         .expect(200)
         .end(function (err, res) {
           console.log(res.body);
